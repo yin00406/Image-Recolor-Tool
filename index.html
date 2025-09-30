@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Recolor Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Recolor Tool</h1>
+            <p>Upload an image, select a color to replace, and recolor it!</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <input type="file" id="imageUpload" accept="image/*">
+                <label for="imageUpload" class="upload-btn">Choose Image</label>
+                <span id="fileName"></span>
+            </section>
+
+            <section class="preview-section">
+                <div class="image-container">
+                    <h3>Original Image</h3>
+                    <canvas id="originalCanvas"></canvas>
+                </div>
+                <div class="image-container">
+                    <h3>Recolored Image</h3>
+                    <canvas id="recoloredCanvas"></canvas>
+                </div>
+            </section>
+
+            <section class="color-section" id="colorSection" style="display: none;">
+                <h3>Detected Colors</h3>
+                <p>Click on a color to select it for replacement:</p>
+                <div id="colorPalette" class="color-palette"></div>
+            </section>
+
+            <section class="control-section" id="controlSection" style="display: none;">
+                <h3>Recolor Settings</h3>
+                <div class="selected-color-display">
+                    <label>Selected Color:</label>
+                    <div id="selectedColorBox" class="color-box"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="hueInput">Target Hue (0-360):</label>
+                    <input type="number" id="hueInput" min="0" max="360" value="0">
+                    <input type="range" id="hueSlider" min="0" max="360" value="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="saturationInput">Target Saturation (0-100%):</label>
+                    <input type="number" id="saturationInput" min="0" max="100" value="100">
+                    <input type="range" id="saturationSlider" min="0" max="100" value="100">
+                </div>
+
+                <div class="input-group">
+                    <label for="valueInput">Target Value/Brightness (0-100%):</label>
+                    <input type="number" id="valueInput" min="0" max="100" value="100">
+                    <input type="range" id="valueSlider" min="0" max="100" value="100">
+                </div>
+
+                <div class="input-group">
+                    <label for="toleranceInput">Color Tolerance (0-100):</label>
+                    <input type="number" id="toleranceInput" min="0" max="100" value="30">
+                    <input type="range" id="toleranceSlider" min="0" max="100" value="30">
+                    <small>Higher tolerance matches more similar colors</small>
+                </div>
+
+                <div class="button-group">
+                    <button id="applyBtn" class="btn btn-primary">Apply Recolor</button>
+                    <button id="downloadBtn" class="btn btn-success" style="display: none;">Download Image</button>
+                    <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ for paper figure editing</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
